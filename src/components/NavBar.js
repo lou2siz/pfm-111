@@ -42,13 +42,24 @@ const NavBar = () => {
   return (
     <AppBar
       position="sticky"
-      color="primary"
-      elevation={4}
+      elevation={0}
       sx={{
         borderRadius: 2,
         margin: '10px',
         padding: '0 10px',
-        background: 'linear-gradient(45deg, #0d47a1 30%, #42a5f5 90%)',
+        background: 'rgba(0, 0, 0, 0.8)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+        },
       }}
     >
       <Toolbar disableGutters>
