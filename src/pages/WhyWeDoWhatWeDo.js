@@ -1,12 +1,24 @@
 // src/pages/WhyWeDoWhatWeDo.js
 
 import React from 'react';
-import { Container, Typography, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import {
+  Container,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Box,
+} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const WhyWeDoWhatWeDo = () => {
   return (
-    <Container>
+    <Container maxWidth="md" sx={{ marginTop: 4 }}>
+      {/* Logo at the top of the page */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 2 }}>
+        <Box component="img" src="/logo1.png" alt="Logo" sx={{ height: 80 }} />
+      </Box>
       <Typography variant="h4" gutterBottom>
         Why We Do What We Do
       </Typography>

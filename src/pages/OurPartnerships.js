@@ -1,11 +1,15 @@
 // src/pages/OurPartnerships.js
 
 import React from 'react';
-import { Container, Typography, List, ListItem, ListItemText } from '@mui/material';
+import { Container, Typography, List, ListItem, ListItemText, Box } from '@mui/material';
 
 const OurPartnerships = () => {
   return (
-    <Container>
+    <Container maxWidth="md" sx={{ marginTop: 4 }}>
+      {/* Logo at the top of the page */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 2 }}>
+        <Box component="img" src="/logo1.png" alt="Logo" sx={{ height: 80 }} />
+      </Box>
       <Typography variant="h4" gutterBottom>
         Our Partnerships
       </Typography>
