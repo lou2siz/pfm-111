@@ -1,102 +1,365 @@
 // src/pages/OurMediaCompanies.js
 
-import React from 'react';
-import { Container, Typography, List, ListItem, ListItemText, Box, Grid } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Container, Typography, Grid, Box } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
+import { styled } from '@mui/material/styles';
+import LaunchIcon from '@mui/icons-material/Launch';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import GroupIcon from '@mui/icons-material/Group';
+import ArticleIcon from '@mui/icons-material/Article';
+import InfoIcon from '@mui/icons-material/Info';
+
+const mediaCompanies = [
+  {
+    id: 1,
+    name: "San Diego Sun Report",
+    tagline: "Illuminating the stories of San Diego's diverse communities",
+    logo: "/logox1.jpg",
+    stats: {
+      readership: "2.5M+",
+      stories: 1200,
+      impact: 92
+    },
+    features: [
+      "AI-Powered Investigation Tools",
+      "Real-time Community Engagement",
+      "Blockchain-verified Sources",
+      "Neural Network Analysis"
+    ],
+    recentStories: [
+      "Tech Innovation in San Diego's Startup Scene",
+      "Community Impact Report 2024",
+      "Environmental Justice Initiative"
+    ],
+    color: "#00f2ff"
+  },
+  {
+    id: 2,
+    name: "San Francisco Freedom Times",
+    tagline: "Championing liberty and justice in the Bay Area",
+    logo: "/logox2.jpg",
+    stats: {
+      readership: "3.1M+",
+      stories: 1500,
+      impact: 95
+    },
+    features: [
+      "Quantum-secured Data Protection",
+      "Decentralized Publishing Platform",
+      "AR/VR News Experience",
+      "Smart Contract Transparency"
+    ],
+    recentStories: [
+      "Tech Ethics Investigation Series",
+      "Bay Area Innovation Report",
+      "Social Justice Technology Impact"
+    ],
+    color: "#7928ca"
+  },
+  {
+    id: 3,
+    name: "Los Angeles Passion News",
+    tagline: "Fueling the heart of LA with stories that matter",
+    logo: "/logox3.jpg",
+    stats: {
+      readership: "4.2M+",
+      stories: 1800,
+      impact: 94
+    },
+    features: [
+      "Neural Language Processing",
+      "Holographic News Displays",
+      "Crowd-sourced Verification",
+      "Quantum Computing Analysis"
+    ],
+    recentStories: [
+      "LA's Digital Transformation",
+      "Future of Entertainment Report",
+      "Urban Technology Initiative"
+    ],
+    color: "#ff0080"
+  }
+];
+
+// Styled Components
+const MediaCard = styled(motion.div)(({ theme, color }) => ({
+  position: 'relative',
+  padding: theme.spacing(4),
+  background: 'rgba(17, 17, 17, 0.7)',
+  backdropFilter: 'blur(10px)',
+  borderRadius: theme.spacing(2),
+  overflow: 'hidden',
+  minHeight: 400,
+  cursor: 'pointer',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 'inherit',
+    padding: '2px',
+    background: `linear-gradient(45deg, ${color}, ${theme.palette.background.default})`,
+    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+    WebkitMaskComposite: 'xor',
+    maskComposite: 'exclude',
+  },
+}));
+
+const StatsBox = styled(Box)(({ theme }) => ({
+  background: 'rgba(255, 255, 255, 0.05)',
+  borderRadius: theme.spacing(1),
+  padding: theme.spacing(2),
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(2),
+  transition: 'all 0.3s ease-in-out',
+  '&:hover': {
+    background: 'rgba(255, 255, 255, 0.1)',
+    transform: 'translateY(-5px)',
+  },
+}));
+
+const InfoIconWrapper = styled(motion.div)(({ theme }) => ({
+  position: 'absolute',
+  top: 16,
+  right: 16,
+  color: 'rgba(255, 255, 255, 0.5)',
+  cursor: 'pointer',
+  zIndex: 2,
+  '&:hover': {
+    color: '#00f2ff',
+  }
+}));
 
 const OurMediaCompanies = () => {
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [stats, setStats] = useState({});
+  const [hoveredInfo, setHoveredInfo] = useState(null);
+
+  // Simulate real-time stats updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStats(prev => ({
+        ...prev,
+        [Math.floor(Math.random() * mediaCompanies.length)]: {
+          readership: (Math.random() * 0.1 + 1).toFixed(2) + 'M+',
+          stories: Math.floor(Math.random() * 100) + 1000,
+          impact: Math.floor(Math.random() * 5) + 90
+        }
+      }));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <Container maxWidth="md" sx={{ marginTop: 4 }}>
-      {/* Logo at the top of the page */}
-      <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 2 }}>
-        <Box component="img" src="/logo1.png" alt="Logo" sx={{ height: 80 }} />
-      </Box>
-      <Typography variant="h4" gutterBottom>
-        Our Media Companies
-      </Typography>
-      <Typography variant="body1" paragraph>
-        Passionfruit Media operates a suite of specialized media outlets, each focused on ensuring
-        their respective regions have access to unbiased, critical reporting. Each company is equipped
-        with a dedicated team, legal support, and partnerships to bring justice to light.
-      </Typography>
-      <Typography variant="body1" paragraph>
-        Our media companies work collaboratively to:
-      </Typography>
-      <List>
-        <ListItem>
-          <ListItemText primary="Amplify community voices." />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="Advocate for transparency in public and private institutions." />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="Bring regional issues to national and global attention." />
-        </ListItem>
-      </List>
-      <Typography variant="body1" paragraph>
-        By maintaining a strong local presence while leveraging national resources, we ensure every
-        region gets the representation and accountability it deserves.
-      </Typography>
-      <Typography variant="h5" gutterBottom sx={{ marginTop: 4 }}>
-        Our Media Outlets
-      </Typography>
-      {/* Displaying the media outlets */}
-      <Grid container spacing={4}>
-        {/* San Diego Sun Report */}
-        <Grid item xs={12} sm={4}>
-          <Box sx={{ textAlign: 'center' }}>
-            <Box
-              component="img"
-              src="/logox1.jpg"
-              alt="San Diego Sun Report"
-              sx={{ width: '100%', height: 'auto', borderRadius: 2 }}
-            />
-            <Typography variant="h6" sx={{ marginTop: 1 }}>
-              San Diego Sun Report
-            </Typography>
-            <Typography variant="body2">
-              Illuminating the stories of San Diego's diverse communities.
-            </Typography>
-          </Box>
+    <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Typography 
+          variant="h2" 
+          align="center" 
+          sx={{ 
+            mb: 6,
+            background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
+            fontFamily: 'Orbitron, sans-serif',
+          }}
+        >
+          Our Media Companies
+        </Typography>
+
+        <Grid container spacing={4}>
+          {mediaCompanies.map((company) => (
+            <Grid item xs={12} md={4} key={company.id}>
+              <MediaCard
+                color={company.color}
+                onClick={() => setSelectedCompany(selectedCompany === company.id ? null : company.id)}
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <InfoIconWrapper
+                  onMouseEnter={() => setHoveredInfo(company.id)}
+                  onMouseLeave={() => setHoveredInfo(null)}
+                  whileHover={{ rotate: 15 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <InfoIcon />
+                </InfoIconWrapper>
+
+                <AnimatePresence>
+                  {hoveredInfo === company.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      style={{
+                        position: 'absolute',
+                        top: 50,
+                        right: 16,
+                        background: 'rgba(0, 0, 0, 0.9)',
+                        padding: '12px',
+                        borderRadius: '8px',
+                        maxWidth: '200px',
+                        zIndex: 3,
+                        border: '1px solid rgba(0, 242, 255, 0.3)',
+                      }}
+                    >
+                      <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                        Click to view advanced features and technology stack
+                      </Typography>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <motion.div
+                  initial={false}
+                  animate={{ rotateY: selectedCompany === company.id ? 180 : 0 }}
+                  transition={{ duration: 0.6 }}
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <Box sx={{ 
+                    position: 'relative',
+                    backfaceVisibility: 'hidden'
+                  }}>
+                    <Box
+                      component="img"
+                      src={company.logo}
+                      alt={company.name}
+                      sx={{
+                        width: '100%',
+                        height: 200,
+                        objectFit: 'cover',
+                        borderRadius: 2,
+                        mb: 2
+                      }}
+                    />
+
+                    <Typography 
+                      variant="h4" 
+                      sx={{ 
+                        mb: 2,
+                        fontFamily: 'Orbitron, sans-serif',
+                        color: company.color
+                      }}
+                    >
+                      {company.name}
+                    </Typography>
+
+                    <Typography variant="body1" sx={{ mb: 3 }}>
+                      {company.tagline}
+                    </Typography>
+
+                    <Grid container spacing={2}>
+                      <Grid item xs={4}>
+                        <StatsBox>
+                          <AnalyticsIcon sx={{ color: company.color }} />
+                          <Box>
+                            <Typography variant="h6" sx={{ color: company.color }}>
+                              {stats[company.id]?.readership || company.stats.readership}
+                            </Typography>
+                            <Typography variant="caption">Readers</Typography>
+                          </Box>
+                        </StatsBox>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <StatsBox>
+                          <ArticleIcon sx={{ color: company.color }} />
+                          <Box>
+                            <Typography variant="h6" sx={{ color: company.color }}>
+                              {stats[company.id]?.stories || company.stats.stories}
+                            </Typography>
+                            <Typography variant="caption">Stories</Typography>
+                          </Box>
+                        </StatsBox>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <StatsBox>
+                          <GroupIcon sx={{ color: company.color }} />
+                          <Box>
+                            <Typography variant="h6" sx={{ color: company.color }}>
+                              {stats[company.id]?.impact || company.stats.impact}%
+                            </Typography>
+                            <Typography variant="caption">Impact</Typography>
+                          </Box>
+                        </StatsBox>
+                      </Grid>
+                    </Grid>
+                  </Box>
+
+                  <AnimatePresence>
+                    {selectedCompany === company.id && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          backfaceVisibility: 'hidden',
+                          transform: 'rotateY(180deg)',
+                          padding: '20px',
+                          background: 'rgba(17, 17, 17, 0.95)',
+                        }}
+                      >
+                        <motion.div
+                          initial={{ x: -20 }}
+                          animate={{ x: 0 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <Typography variant="h5" sx={{ color: company.color, mb: 3 }}>
+                            Advanced Features
+                          </Typography>
+                        </motion.div>
+
+                        {company.features.map((feature, index) => (
+                          <motion.div
+                            key={feature}
+                            initial={{ x: -20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <Box 
+                              sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                mb: 2,
+                                p: 1,
+                                borderRadius: 1,
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                transition: 'all 0.3s ease-in-out',
+                                '&:hover': {
+                                  background: 'rgba(255, 255, 255, 0.1)',
+                                  transform: 'translateX(10px)',
+                                }
+                              }}
+                            >
+                              <LaunchIcon sx={{ mr: 1, color: company.color }} />
+                              <Typography variant="body2">{feature}</Typography>
+                            </Box>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </MediaCard>
+            </Grid>
+          ))}
         </Grid>
-        {/* San Francisco Freedom Times */}
-        <Grid item xs={12} sm={4}>
-          <Box sx={{ textAlign: 'center' }}>
-            <Box
-              component="img"
-              src="/logox2.jpg"
-              alt="San Francisco Freedom Times"
-              sx={{ width: '100%', height: 'auto', borderRadius: 2 }}
-            />
-            <Typography variant="h6" sx={{ marginTop: 1 }}>
-              San Francisco Freedom Times
-            </Typography>
-            <Typography variant="body2">
-              Championing liberty and justice in the Bay Area.
-            </Typography>
-          </Box>
-        </Grid>
-        {/* Los Angeles Passion News */}
-        <Grid item xs={12} sm={4}>
-          <Box sx={{ textAlign: 'center' }}>
-            <Box
-              component="img"
-              src="/logox3.jpg"
-              alt="Los Angeles Passion News"
-              sx={{ width: '100%', height: 'auto', borderRadius: 2 }}
-            />
-            <Typography variant="h6" sx={{ marginTop: 1 }}>
-              Los Angeles Passion News
-            </Typography>
-            <Typography variant="body2">
-              Fueling the heart of LA with stories that matter.
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
-      <Typography variant="body1" paragraph sx={{ marginTop: 4 }}>
-        Through these efforts, we showcase our unwavering commitment to making the world a better,
-        more equitable place for all.
-      </Typography>
+      </motion.div>
     </Container>
   );
 };

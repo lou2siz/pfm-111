@@ -1,7 +1,8 @@
 // src/themes/theme.js
 
 import { createTheme } from '@mui/material/styles';
-import '@fontsource/poppins'; // Import Poppins font
+import '@fontsource/poppins';
+import '@fontsource/orbitron'; // Add futuristic font for headings
 
 const theme = createTheme({
   palette: {
@@ -18,22 +19,37 @@ const theme = createTheme({
     },
     background: {
       default: '#000000',
-      paper: 'rgba(17, 17, 17, 0.8)',
+      paper: 'rgba(17, 17, 17, 0.9)',
     },
     text: {
       primary: '#ffffff',
       secondary: 'rgba(255, 255, 255, 0.7)',
     },
+    custom: {
+      neon: '#00f2ff',
+      purple: '#7928ca',
+      darkGlass: 'rgba(17, 17, 17, 0.9)',
+    },
   },
   typography: {
     fontFamily: 'Poppins, Arial, sans-serif',
-    h4: {
-      fontWeight: 600,
-      letterSpacing: '0.02em',
+    h1: {
+      fontFamily: 'Orbitron, sans-serif',
+      fontWeight: 700,
+      letterSpacing: '0.05em',
     },
-    body1: {
-      lineHeight: 1.8,
-      letterSpacing: '0.01em',
+    h2: {
+      fontFamily: 'Orbitron, sans-serif',
+      fontWeight: 700,
+    },
+    h3: {
+      fontFamily: 'Orbitron, sans-serif',
+      fontWeight: 600,
+    },
+    h4: {
+      fontFamily: 'Orbitron, sans-serif',
+      fontWeight: 600,
+      letterSpacing: '0.03em',
     },
   },
   components: {
@@ -42,25 +58,30 @@ const theme = createTheme({
         root: {
           borderRadius: 8,
           textTransform: 'none',
-          padding: '8px 24px',
+          padding: '10px 24px',
           transition: 'all 0.3s ease-in-out',
           background: 'linear-gradient(45deg, #00f2ff 30%, #7928ca 90%)',
+          fontFamily: 'Orbitron, sans-serif',
+          border: '1px solid rgba(0, 242, 255, 0.3)',
           '&:hover': {
             transform: 'translateY(-2px)',
-            boxShadow: '0 8px 16px rgba(0, 242, 255, 0.3)',
+            boxShadow: '0 0 20px rgba(0, 242, 255, 0.5)',
+            border: '1px solid rgba(0, 242, 255, 0.8)',
           },
         },
       },
     },
-    MuiListItem: {
+    MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          marginBottom: 8,
+          background: 'rgba(17, 17, 17, 0.7)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(0, 242, 255, 0.1)',
           transition: 'all 0.3s ease-in-out',
           '&:hover': {
-            background: 'rgba(255, 255, 255, 0.05)',
-            transform: 'translateX(8px)',
+            transform: 'translateY(-5px)',
+            boxShadow: '0 0 30px rgba(0, 242, 255, 0.2)',
+            border: '1px solid rgba(0, 242, 255, 0.3)',
           },
         },
       },
