@@ -109,7 +109,7 @@ const partnerships = [
 // Styled Components
 const PartnershipCard = styled(motion.div)(({ theme, color }) => ({
   position: 'relative',
-  padding: theme.spacing(4),
+  padding: { xs: theme.spacing(2), sm: theme.spacing(3), md: theme.spacing(4) },
   background: 'rgba(17, 17, 17, 0.7)',
   backdropFilter: 'blur(10px)',
   borderRadius: theme.spacing(2),
@@ -157,7 +157,7 @@ const IconBox = styled(Box)(({ color }) => ({
 }));
 
 const MetricBox = styled(motion.div)(({ theme, color, isActive }) => ({
-  padding: theme.spacing(2),
+  padding: { xs: theme.spacing(1), sm: theme.spacing(2) },
   background: isActive ? `rgba(${color}, 0.15)` : 'rgba(255, 255, 255, 0.05)',
   borderRadius: theme.spacing(1),
   transition: 'all 0.3s ease-in-out',
@@ -167,6 +167,13 @@ const MetricBox = styled(motion.div)(({ theme, color, isActive }) => ({
     background: `rgba(${color}, 0.2)`,
     transform: 'translateY(-5px)',
     boxShadow: `0 5px 15px ${color}33`,
+  },
+  '& .MuiTypography-h4': {
+    fontSize: {
+      xs: '1.5rem',
+      sm: '1.75rem',
+      md: '2rem'
+    }
   }
 }));
 
@@ -230,6 +237,7 @@ const OurPartnerships = () => {
           align="center" 
           sx={{ 
             mb: 6,
+            fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
             background: 'linear-gradient(45deg, #00f2ff, #00a2ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -256,10 +264,10 @@ const OurPartnerships = () => {
                   <Typography 
                     variant="h4" 
                     sx={{ 
-                      ml: 2,
+                      ml: { xs: 1, sm: 2 },
                       fontFamily: 'Orbitron, sans-serif',
                       color: partner.color,
-                      fontSize: { xs: '1.5rem', md: '2rem' }
+                      fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' }
                     }}
                   >
                     {partner.name}
@@ -272,7 +280,7 @@ const OurPartnerships = () => {
 
                 <Grid container spacing={2}>
                   {Object.entries(partner.metrics).map(([key, value]) => (
-                    <Grid item xs={4} key={key}>
+                    <Grid item xs={12} sm={4} key={key}>
                       <MetricBox
                         color={partner.color}
                         isActive={activeMetric === `${partner.id}-${key}`}
@@ -337,7 +345,7 @@ const OurPartnerships = () => {
                         </Typography>
                         <Grid container spacing={2}>
                           {partner.initiatives.map((initiative, idx) => (
-                            <Grid item xs={6} key={initiative}>
+                            <Grid item xs={12} sm={6} key={initiative}>
                               <motion.div
                                 initial={{ x: -20, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}

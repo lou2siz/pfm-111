@@ -62,11 +62,12 @@ const NavBar = () => {
           overflow: 'hidden',
           background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.05), rgba(121, 40, 202, 0.05))',
           borderRadius: '8px',
-          padding: '8px 16px',
-          margin: '0 8px',
+          padding: { xs: '6px 12px', md: '8px 16px' },
+          margin: { xs: '4px', md: '0 8px' },
           transition: 'all 0.3s ease-in-out',
           fontWeight: 'bold',
           textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
+          fontSize: { xs: '0.875rem', md: '1rem' },
           '&:hover': {
             background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.1), rgba(121, 40, 202, 0.1))',
             transform: 'translateY(-2px)',
@@ -89,6 +90,7 @@ const NavBar = () => {
             transformOrigin: 'left',
           },
         },
+        p: { xs: 1, md: 2 },
       }}
     >
       <Toolbar disableGutters>

@@ -174,98 +174,39 @@ const WhoWeAre = () => {
           Who We Are
         </Typography>
 
-        <Grid container spacing={4}>
-          {teamMembers.map((member, index) => (
+        <Grid container spacing={{ xs: 2, md: 4 }}>
+          {teamMembers.map((member) => (
             <Grid item xs={12} md={4} key={member.category}>
-              <TeamCard
-                color={member.color}
-                onClick={() => setSelectedMember(selectedMember === index ? null : index)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <IconWrapper color={member.color}>
-                  {member.icon}
-                </IconWrapper>
-
+              <Box sx={{ 
+                p: { xs: 2, sm: 3, md: 4 },
+                mb: { xs: 2, md: 0 }
+              }}>
                 <Typography 
                   variant="h4" 
                   sx={{ 
-                    mb: 2,
-                    fontFamily: 'Orbitron, sans-serif',
-                    color: member.color,
-                    fontSize: { xs: '1.5rem', md: '2rem' }
+                    fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
+                    mb: { xs: 1, md: 2 }
                   }}
                 >
                   {member.category}
                 </Typography>
-
-                <Typography variant="body1" sx={{ mb: 3, color: 'rgba(255, 255, 255, 0.8)' }}>
-                  {member.description}
-                </Typography>
-
-                <AnimatePresence>
-                  {selectedMember === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Typography variant="h6" sx={{ mb: 2, color: member.color }}>
-                        Core Expertise
-                      </Typography>
-                      <Grid container spacing={2}>
-                        {member.expertise.map((skill, idx) => (
-                          <Grid item xs={6} key={skill}>
-                            <motion.div
-                              initial={{ x: -20, opacity: 0 }}
-                              animate={{ x: 0, opacity: 1 }}
-                              transition={{ delay: idx * 0.1 }}
-                            >
-                              <Box sx={{
-                                p: 1,
-                                background: 'rgba(255, 255, 255, 0.05)',
-                                borderRadius: 1,
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: 1,
-                                '&:hover': {
-                                  background: 'rgba(255, 255, 255, 0.1)',
-                                  transform: 'translateX(10px)',
-                                }
-                              }}>
-                                <TimelineIcon sx={{ color: member.color, fontSize: 20 }} />
-                                <Typography variant="body2">{skill}</Typography>
-                              </Box>
-                            </motion.div>
-                          </Grid>
-                        ))}
-                      </Grid>
-
-                      <Box sx={{ mt: 3 }}>
-                        <Typography variant="h6" sx={{ mb: 2, color: member.color }}>
-                          Impact Metrics
+                
+                <Grid container spacing={{ xs: 1, md: 2 }}>
+                  {Object.entries(member.stats).map(([key, value]) => (
+                    <Grid item xs={4} key={key}>
+                      <Box sx={{ p: { xs: 1, md: 2 } }}>
+                        <Typography variant="h4" sx={{ color: member.color }}>
+                          {stats[index]?.[key] || value}
+                          {typeof value === 'number' && key.includes('Rate') ? '%' : ''}
                         </Typography>
-                        <Grid container spacing={2}>
-                          {Object.entries(member.stats).map(([key, value]) => (
-                            <Grid item xs={4} key={key}>
-                              <StatBox color={member.color}>
-                                <Typography variant="h4" sx={{ color: member.color }}>
-                                  {stats[index]?.[key] || value}
-                                  {typeof value === 'number' && key.includes('Rate') ? '%' : ''}
-                                </Typography>
-                                <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}
-                                </Typography>
-                              </StatBox>
-                            </Grid>
-                          ))}
-                        </Grid>
+                        <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                          {key.replace(/([A-Z])/g, ' $1').trim()}
+                        </Typography>
                       </Box>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </TeamCard>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
             </Grid>
           ))}
         </Grid>

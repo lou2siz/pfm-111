@@ -37,8 +37,9 @@ const AboutUs = () => {
       initial="hidden"
       animate="visible"
       sx={{ 
-        mt: { xs: 4, md: 8 }, 
-        mb: { xs: 4, md: 8 },
+        mt: { xs: 2, md: 8 }, 
+        mb: { xs: 2, md: 8 },
+        px: { xs: 2, sm: 3, md: 4 },
         position: 'relative',
       }}
     >
@@ -62,8 +63,8 @@ const AboutUs = () => {
           <GradientText 
             variant="h1" 
             sx={{ 
-              mb: { xs: 3, md: 5 },
-              fontSize: { xs: '2.5rem', md: '4rem' },
+              mb: { xs: 2, md: 5 },
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '4rem' },
               fontWeight: 700,
               textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
               fontFamily: 'Orbitron, sans-serif',
@@ -74,7 +75,9 @@ const AboutUs = () => {
           <Typography 
             variant="h5" 
             sx={{ 
-              mb: 6,
+              mb: { xs: 3, md: 6 },
+              fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' },
+              px: { xs: 2, sm: 0 },
               color: 'rgba(255, 255, 255, 0.8)',
               maxWidth: '800px',
               mx: 'auto',

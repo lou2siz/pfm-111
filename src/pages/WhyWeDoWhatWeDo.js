@@ -174,125 +174,57 @@ const WhyWeDoWhatWeDo = () => {
   }, []);
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+    <Container maxWidth="xl" sx={{ mt: { xs: 4, md: 8 }, mb: { xs: 4, md: 8 } }}>
+      <Typography 
+        variant="h2" 
+        sx={{ 
+          fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
+          mb: { xs: 3, md: 6 }
+        }}
       >
-        <Typography 
-          variant="h2" 
-          align="center" 
-          sx={{ 
-            mb: 6,
-            background: 'linear-gradient(45deg, #00f2ff, #00f2ff)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
-            fontFamily: 'Orbitron, sans-serif',
-          }}
-        >
-          Why We Do What We Do
-        </Typography>
+        Why We Do What We Do
+      </Typography>
 
-        <Grid container spacing={4}>
-          {principles.map((principle) => (
-            <Grid item xs={12} md={6} key={principle.id}>
-              <PrincipleCard
-                color={principle.color}
-                onClick={() => setSelectedPrinciple(selectedPrinciple === principle.id ? null : principle.id)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+      <Grid container spacing={{ xs: 2, md: 4 }}>
+        {principles.map((principle) => (
+          <Grid item xs={12} md={6} key={principle.id}>
+            <Box sx={{ 
+              p: { xs: 2, sm: 3, md: 4 },
+              mb: { xs: 2, md: 0 }
+            }}>
+              <Typography 
+                variant="h4" 
+                sx={{ 
+                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
+                  mb: { xs: 1, md: 2 }
+                }}
               >
-                <IconWrapper color={principle.color}>
-                  {principle.icon}
-                </IconWrapper>
-
-                <Typography 
-                  variant="h4" 
-                  sx={{ 
-                    mb: 2,
-                    fontFamily: 'Orbitron, sans-serif',
-                    color: principle.color
-                  }}
-                >
-                  {principle.title}
-                </Typography>
-
-                <Typography variant="body1" sx={{ mb: 3, color: 'rgba(255, 255, 255, 0.8)' }}>
-                  {principle.description}
-                </Typography>
-
-                <Grid container spacing={2}>
-                  {Object.entries(principle.impact).map(([key, value]) => (
-                    <Grid item xs={4} key={key}>
-                      <ImpactBox color={principle.color}>
-                        <Typography variant="h4" sx={{ color: principle.color }}>
-                          {impacts[principle.id]?.[key] || value}
-                          {typeof value === 'number' && 
-                            (key.includes('Rate') || 
-                             key.includes('Score') || 
-                             key.includes('Growth') || 
-                             key.includes('Success')) ? '%' : ''}
-                        </Typography>
-                        <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                          {key.replace(/([A-Z])/g, ' $1').trim()}
-                        </Typography>
-                      </ImpactBox>
-                    </Grid>
-                  ))}
-                </Grid>
-
-                <AnimatePresence>
-                  {selectedPrinciple === principle.id && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Box sx={{ mt: 4 }}>
-                        <Typography variant="h6" sx={{ mb: 2, color: principle.color }}>
-                          Future Initiatives
-                        </Typography>
-                        <Grid container spacing={2}>
-                          {principle.initiatives.map((initiative, idx) => (
-                            <Grid item xs={6} key={initiative}>
-                              <motion.div
-                                initial={{ x: -20, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: idx * 0.1 }}
-                                onMouseEnter={() => setHoveredInitiative(initiative)}
-                                onMouseLeave={() => setHoveredInitiative(null)}
-                              >
-                                <Box sx={{
-                                  p: 2,
-                                  background: hoveredInitiative === initiative ? 
-                                    'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)',
-                                  borderRadius: 1,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: 1,
-                                  transition: 'all 0.3s ease-in-out',
-                                  transform: hoveredInitiative === initiative ? 
-                                    'translateX(10px)' : 'translateX(0)',
-                                }}>
-                                  <RocketLaunchIcon sx={{ color: principle.color }} />
-                                  <Typography variant="body2">{initiative}</Typography>
-                                </Box>
-                              </motion.div>
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Box>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </PrincipleCard>
-            </Grid>
-          ))}
-        </Grid>
-      </motion.div>
+                {principle.title}
+              </Typography>
+              
+              <Grid container spacing={{ xs: 1, md: 2 }}>
+                {Object.entries(principle.impact).map(([key, value]) => (
+                  <Grid item xs={12} sm={4} key={key}>
+                    <ImpactBox color={principle.color}>
+                      <Typography variant="h4" sx={{ color: principle.color }}>
+                        {impacts[principle.id]?.[key] || value}
+                        {typeof value === 'number' && 
+                          (key.includes('Rate') || 
+                           key.includes('Score') || 
+                           key.includes('Growth') || 
+                           key.includes('Success')) ? '%' : ''}
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                        {key.replace(/([A-Z])/g, ' $1').trim()}
+                      </Typography>
+                    </ImpactBox>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };

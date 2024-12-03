@@ -171,49 +171,24 @@ const BenBriskin = () => {
   }, []);
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+    <Container maxWidth="xl" sx={{ mt: { xs: 4, md: 8 }, mb: { xs: 4, md: 8 } }}>
+      <Typography 
+        variant="h2" 
+        sx={{ 
+          fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
+          mb: { xs: 3, md: 6 }
+        }}
       >
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Typography 
-            variant="h2" 
-            sx={{ 
-              mb: 2,
-              background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
-              fontFamily: 'Orbitron, sans-serif',
-            }}
-          >
-            Ben Briskin
-          </Typography>
-          <Typography 
-            variant="h5" 
-            sx={{ 
-              color: 'rgba(255, 255, 255, 0.8)',
-              mb: 3
-            }}
-          >
-            Visionary Leader • Elite Realtor • Strategic Trader
-          </Typography>
-          
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 4 }}>
-            <SocialLink href="https://linkedin.com/in/benbriskin" target="_blank" color="#00f2ff">
-              <LinkedInIcon /> LinkedIn
-            </SocialLink>
-            <SocialLink href="https://twitter.com/benbriskin" target="_blank" color="#7928ca">
-              <TwitterIcon /> Twitter
-            </SocialLink>
-          </Box>
-        </Box>
+        Ben Briskin
+      </Typography>
 
-        <Grid container spacing={4}>
-          {achievements.map((achievement) => (
-            <Grid item xs={12} md={4} key={achievement.id}>
+      <Grid container spacing={{ xs: 2, md: 4 }}>
+        {achievements.map((achievement) => (
+          <Grid item xs={12} md={4} key={achievement.id}>
+            <Box sx={{ 
+              p: { xs: 2, sm: 3, md: 4 },
+              mb: { xs: 2, md: 0 }
+            }}>
               <ProfileCard
                 color={achievement.color}
                 onClick={() => setSelectedRole(selectedRole === achievement.id ? null : achievement.id)}
@@ -239,9 +214,9 @@ const BenBriskin = () => {
                   {achievement.description}
                 </Typography>
 
-                <Grid container spacing={2}>
+                <Grid container spacing={{ xs: 1, md: 2 }}>
                   {Object.entries(achievement.stats).map(([key, value]) => (
-                    <Grid item xs={4} key={key}>
+                    <Grid item xs={12} sm={4} key={key}>
                       <StatBox color={achievement.color}>
                         <Typography variant="h4" sx={{ color: achievement.color }}>
                           {stats[achievement.id]?.[key] || value}
@@ -303,10 +278,10 @@ const BenBriskin = () => {
                   )}
                 </AnimatePresence>
               </ProfileCard>
-            </Grid>
-          ))}
-        </Grid>
-      </motion.div>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };

@@ -128,30 +128,24 @@ const OurInitiatives = () => {
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+    <Container maxWidth="xl" sx={{ mt: { xs: 4, md: 8 }, mb: { xs: 4, md: 8 } }}>
+      <Typography 
+        variant="h2" 
+        sx={{ 
+          fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
+          mb: { xs: 3, md: 6 }
+        }}
       >
-        <Typography 
-          variant="h2" 
-          align="center" 
-          sx={{ 
-            mb: 6,
-            background: 'linear-gradient(45deg, #00f2ff, #00a2ff)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
-            fontFamily: 'Orbitron, sans-serif',
-          }}
-        >
-          Our Initiatives
-        </Typography>
+        Our Initiatives
+      </Typography>
 
-        <Grid container spacing={4}>
-          {initiatives.map((initiative) => (
-            <Grid item xs={12} md={6} key={initiative.id}>
+      <Grid container spacing={{ xs: 2, md: 4 }}>
+        {initiatives.map((initiative) => (
+          <Grid item xs={12} md={6} key={initiative.id}>
+            <Box sx={{ 
+              p: { xs: 2, sm: 3, md: 4 },
+              mb: { xs: 2, md: 0 }
+            }}>
               <InitiativeCard
                 onClick={() => setExpandedId(expandedId === initiative.id ? null : initiative.id)}
                 onMouseEnter={() => setHoveredId(initiative.id)}
@@ -302,10 +296,10 @@ const OurInitiatives = () => {
                   <ArrowForwardIcon />
                 </IconButton>
               </InitiativeCard>
-            </Grid>
-          ))}
-        </Grid>
-      </motion.div>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };

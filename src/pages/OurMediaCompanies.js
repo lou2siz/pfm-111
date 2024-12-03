@@ -159,30 +159,24 @@ const OurMediaCompanies = () => {
   }, []);
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+    <Container maxWidth="xl" sx={{ mt: { xs: 4, md: 8 }, mb: { xs: 4, md: 8 } }}>
+      <Typography 
+        variant="h2" 
+        sx={{ 
+          fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
+          mb: { xs: 3, md: 6 }
+        }}
       >
-        <Typography 
-          variant="h2" 
-          align="center" 
-          sx={{ 
-            mb: 6,
-            background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
-            fontFamily: 'Orbitron, sans-serif',
-          }}
-        >
-          Our Media Companies
-        </Typography>
+        Our Media Companies
+      </Typography>
 
-        <Grid container spacing={4}>
-          {mediaCompanies.map((company) => (
-            <Grid item xs={12} md={4} key={company.id}>
+      <Grid container spacing={{ xs: 2, md: 4 }}>
+        {mediaCompanies.map((company) => (
+          <Grid item xs={12} md={6} key={company.id}>
+            <Box sx={{ 
+              p: { xs: 2, sm: 3, md: 4 },
+              mb: { xs: 2, md: 0 }
+            }}>
               <MediaCard
                 color={company.color}
                 onClick={() => setSelectedCompany(selectedCompany === company.id ? null : company.id)}
@@ -279,40 +273,22 @@ const OurMediaCompanies = () => {
                       {company.website}
                     </Typography>
 
-                    <Grid container spacing={2}>
-                      <Grid item xs={4}>
-                        <StatsBox>
-                          <AnalyticsIcon sx={{ color: company.color }} />
-                          <Box>
-                            <Typography variant="h6" sx={{ color: company.color }}>
-                              {stats[company.id]?.readership || company.stats.readership}
-                            </Typography>
-                            <Typography variant="caption">Readers</Typography>
-                          </Box>
-                        </StatsBox>
-                      </Grid>
-                      <Grid item xs={4}>
-                        <StatsBox>
-                          <ArticleIcon sx={{ color: company.color }} />
-                          <Box>
-                            <Typography variant="h6" sx={{ color: company.color }}>
-                              {stats[company.id]?.stories || company.stats.stories}
-                            </Typography>
-                            <Typography variant="caption">Stories</Typography>
-                          </Box>
-                        </StatsBox>
-                      </Grid>
-                      <Grid item xs={4}>
-                        <StatsBox>
-                          <GroupIcon sx={{ color: company.color }} />
-                          <Box>
-                            <Typography variant="h6" sx={{ color: company.color }}>
-                              {stats[company.id]?.impact || company.stats.impact}%
-                            </Typography>
-                            <Typography variant="caption">Impact</Typography>
-                          </Box>
-                        </StatsBox>
-                      </Grid>
+                    <Grid container spacing={{ xs: 1, md: 2 }}>
+                      {Object.entries(company.stats).map(([key, value]) => (
+                        <Grid item xs={12} sm={4} key={key}>
+                          <StatsBox>
+                            {key === 'readership' && <AnalyticsIcon sx={{ color: company.color }} />}
+                            {key === 'stories' && <ArticleIcon sx={{ color: company.color }} />}
+                            {key === 'impact' && <GroupIcon sx={{ color: company.color }} />}
+                            <Box>
+                              <Typography variant="h6" sx={{ color: company.color }}>
+                                {stats[company.id]?.hasOwnProperty(key) ? stats[company.id][key] : value}
+                              </Typography>
+                              <Typography variant="caption">{key.charAt(0).toUpperCase() + key.slice(1)}</Typography>
+                            </Box>
+                          </StatsBox>
+                        </Grid>
+                      ))}
                     </Grid>
                   </Box>
 
@@ -377,10 +353,10 @@ const OurMediaCompanies = () => {
                   </AnimatePresence>
                 </motion.div>
               </MediaCard>
-            </Grid>
-          ))}
-        </Grid>
-      </motion.div>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };
