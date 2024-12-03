@@ -15,15 +15,15 @@ const teamMembers = [
     icon: <GavelIcon />,
     description: "With over 20 years of experience, our lawyers specialize in minority rights, ensuring accountability and justice.",
     stats: {
-      casesWon: 850,
-      successRate: 92,
-      impactScore: 95
+      casesWon: 4,
+      successRate: 57,
+      impactScore: 75
     },
     expertise: [
       "Civil Rights Litigation",
       "Corporate Accountability",
       "Environmental Justice",
-      "Digital Privacy Rights"
+      "Public Records Accountability"
     ],
     color: "#00f2ff"
   },
@@ -32,9 +32,9 @@ const teamMembers = [
     icon: <NewspaperIcon />,
     description: "Passionate storytellers committed to exposing the hidden truths that impact underprivileged communities.",
     stats: {
-      storiesPublished: 1200,
-      readershipMillions: 45,
-      investigationsCompleted: 320
+      storiesPublished: 70,
+      readershipMillions: 0,
+      investigationsCompleted: 46
     },
     expertise: [
       "Investigative Journalism",
@@ -165,7 +165,7 @@ const WhoWeAre = () => {
           sx={{ 
             mb: 6,
             fontFamily: 'Orbitron, sans-serif',
-            background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
+            background: 'linear-gradient(45deg, #00f2ff, #00f2ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',

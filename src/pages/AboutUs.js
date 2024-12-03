@@ -154,7 +154,7 @@ const AboutUs = () => {
                 gutterBottom
                 sx={{
                   color: 'secondary.main',
-                  textShadow: '0 0 10px rgba(121, 40, 202, 0.5)',
+                  textShadow: '0 0 10px rgba(160, 100, 255, 0.5)',
                   mb: 3,
                   fontFamily: 'Orbitron, sans-serif',
                 }}
@@ -179,7 +179,7 @@ const AboutUs = () => {
             <Box 
               sx={{ 
                 mt: 3,
-                background: 'linear-gradient(45deg, rgba(121, 40, 202, 0.1), rgba(0, 242, 255, 0.1))',
+                background: 'linear-gradient(45deg, rgba(160, 100, 255, 0.1), rgba(0, 242, 255, 0.1))',
                 borderRadius: 2,
                 p: 2,
               }}

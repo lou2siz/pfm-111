@@ -19,8 +19,8 @@ const partnerships = [
     description: "Supporting student-driven innovation and providing opportunities for the next generation of change-makers.",
     metrics: {
       studentsImpacted: 250000,
-      programsLaunched: 75,
-      successRate: 94
+      programsLaunched: 3,
+      successRate: 80
     },
     initiatives: [
       "AI-Powered Learning Labs",
@@ -41,9 +41,9 @@ const partnerships = [
     icon: <AccountBalanceIcon />,
     description: "Our birthplace and a vital partner in empowering students to stand up for justice.",
     metrics: {
-      projectsCompleted: 120,
-      studentEngagement: 85,
-      communityImpact: 92
+      projectsCompleted: 3,
+      studentEngagement: 412,
+      communityImpact: 100
     },
     initiatives: [
       "Virtual Reality Campus",
@@ -56,7 +56,7 @@ const partnerships = [
       "Award-winning Programs",
       "Global Recognition"
     ],
-    color: "#7928ca"
+    color: "#00a2ff"
   },
   {
     id: 3,
@@ -64,9 +64,9 @@ const partnerships = [
     icon: <CampaignIcon />,
     description: "A leading voice in independent journalism, helping us amplify critical stories.",
     metrics: {
-      storiesPublished: 3500,
-      readership: 12000000,
-      investigationSuccess: 96
+      storiesPublished: 67,
+      readership: 1500,
+      investigationSuccess: 80
     },
     initiatives: [
       "AI Truth Detection",
@@ -87,9 +87,9 @@ const partnerships = [
     icon: <DiversityIcon />,
     description: "Advocating for LGBTQ+ rights and ensuring equality for all communities.",
     metrics: {
-      policiesChanged: 45,
-      livesImpacted: 500000,
-      advocacyWins: 88
+      policiesChanged: 1,
+      livesImpacted: 250,
+      advocacyWins: 2
     },
     initiatives: [
       "Digital Rights Platform",
@@ -250,7 +250,7 @@ const OurPartnerships = () => {
           align="center" 
           sx={{ 
             mb: 6,
-            background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
+            background: 'linear-gradient(45deg, #00f2ff, #00a2ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
@@ -325,7 +325,7 @@ const OurPartnerships = () => {
                           {typeof value === 'number' && 
                             (key.includes('Rate') || 
                              key.includes('Success') || 
-                             key.includes('Impact') || 
+                             (key.includes('Impact') && !key.includes('livesImpacted')) || 
                              key.includes('Engagement')) ? '%' : ''}
                         </Typography>
                         <Typography 

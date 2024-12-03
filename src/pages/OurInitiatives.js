@@ -28,7 +28,7 @@ const InitiativeCard = styled(motion.div)(({ theme }) => ({
     bottom: 0,
     borderRadius: 'inherit',
     padding: '2px',
-    background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
+    background: 'linear-gradient(45deg, #00f2ff, #00a2ff)',
     WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
     WebkitMaskComposite: 'xor',
     maskComposite: 'exclude',
@@ -59,7 +59,7 @@ const initiatives = [
     icon: <LightbulbIcon sx={{ fontSize: 30, color: '#00f2ff' }} />,
     description: "We uncover the missing pieces of critical information and expose systemic injustices that oppress everyday people.",
     details: [
-      "Advanced data mining techniques",
+      "Data mining techniques",
       "AI-powered pattern recognition",
       "Secure whistleblower platforms",
       "Global investigation network"
@@ -73,11 +73,11 @@ const initiatives = [
   {
     id: 2,
     title: "Accountability Through Litigation",
-    icon: <BalanceIcon sx={{ fontSize: 30, color: '#7928ca' }} />,
+    icon: <BalanceIcon sx={{ fontSize: 30, color: '#00a2ff' }} />,
     description: "Our legal team fights tirelessly to obtain public and private records, ensuring the truth is revealed.",
     details: [
-      "Blockchain-based evidence tracking",
-      "Smart contract automation",
+      "Evidence tracking",
+      "High Level Legal Team",
       "Quantum-secure documentation",
       "AI-assisted legal research"
     ],
@@ -99,26 +99,26 @@ const initiatives = [
       "Cross-platform syndication"
     ],
     stats: {
-      reach: "45M+",
-      engagement: "92%",
-      truthScore: 98
+      reach: "7500+",
+      engagement: "15%+",
+      truthScore: 100
     }
   },
   {
     id: 4,
     title: "AI Auditing for Justice",
-    icon: <SmartToyIcon sx={{ fontSize: 30, color: '#7928ca' }} />,
+    icon: <SmartToyIcon sx={{ fontSize: 30, color: '#00a2ff' }} />,
     description: "As technology evolves, we advocate for responsible AI implementation, ensuring fairness and equity.",
     details: [
-      "Quantum computing integration",
+      "Computing integration",
       "Ethical AI frameworks",
       "Bias detection systems",
       "Automated fairness testing"
     ],
     stats: {
-      systemsAudited: 280,
-      biasesIdentified: 1500,
-      improvementRate: 94
+      systemsAudited: 12,
+      biasesIdentified: 37,
+      improvementRate: 83
     }
   }
 ];
@@ -139,7 +139,7 @@ const OurInitiatives = () => {
           align="center" 
           sx={{ 
             mb: 6,
-            background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
+            background: 'linear-gradient(45deg, #00f2ff, #00a2ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
@@ -231,7 +231,7 @@ const OurInitiatives = () => {
                           <Box sx={{ 
                             mt: 3, 
                             p: 2, 
-                            background: 'rgba(121, 40, 202, 0.1)', 
+                            background: 'rgba(0, 162, 255, 0.1)', 
                             borderRadius: 2,
                             position: 'relative',
                             overflow: 'hidden',
@@ -242,7 +242,7 @@ const OurInitiatives = () => {
                               left: 0,
                               right: 0,
                               bottom: 0,
-                              background: 'linear-gradient(45deg, rgba(0, 242, 255, 0.1), rgba(121, 40, 202, 0.1))',
+                              background: 'linear-gradient(45deg, rgba(0, 242, 255, 0.1), rgba(0, 162, 255, 0.1))',
                               opacity: 0,
                               transition: 'opacity 0.3s ease-in-out',
                             },
@@ -250,7 +250,7 @@ const OurInitiatives = () => {
                               opacity: 1,
                             }
                           }}>
-                            <Typography variant="h6" sx={{ mb: 2, color: '#7928ca' }}>
+                            <Typography variant="h6" sx={{ mb: 2, color: '#00a2ff' }}>
                               Impact Metrics
                             </Typography>
                             <Grid container spacing={2}>

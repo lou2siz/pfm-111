@@ -16,10 +16,11 @@ const mediaCompanies = [
     name: "San Diego Sun Report",
     tagline: "Illuminating the stories of San Diego's diverse communities",
     logo: "/logox1.jpg",
+    website: "https://sandiegosunreport.com",
     stats: {
-      readership: "2.5M+",
-      stories: 1200,
-      impact: 92
+      readership: "2.1k+",
+      stories: 20,
+      impact: 100
     },
     features: [
       "AI-Powered Investigation Tools",
@@ -28,9 +29,9 @@ const mediaCompanies = [
       "Neural Network Analysis"
     ],
     recentStories: [
-      "Tech Innovation in San Diego's Startup Scene",
-      "Community Impact Report 2024",
-      "Environmental Justice Initiative"
+      "Check Website for Stories",
+      "Check Website for Stories",
+      "Check Website for Stories"
     ],
     color: "#00f2ff"
   },
@@ -39,44 +40,46 @@ const mediaCompanies = [
     name: "San Francisco Freedom Times",
     tagline: "Championing liberty and justice in the Bay Area",
     logo: "/logox2.jpg",
+    website: "https://sanfranciscofreedomtimes.com",
     stats: {
-      readership: "3.1M+",
-      stories: 1500,
-      impact: 95
+      readership: "3.1k+",
+      stories: 34,
+      impact: 100
     },
     features: [
       "Quantum-secured Data Protection",
       "Decentralized Publishing Platform",
-      "AR/VR News Experience",
-      "Smart Contract Transparency"
+      "High Level News Experience",
+      "Transparency"
     ],
     recentStories: [
-      "Tech Ethics Investigation Series",
-      "Bay Area Innovation Report",
-      "Social Justice Technology Impact"
+      "Check Website for Stories",
+      "Check Website for Stories",
+      "Check Website for Stories"
     ],
-    color: "#7928ca"
+    color: "#00f2ff"
   },
   {
     id: 3,
     name: "Los Angeles Passion News",
     tagline: "Fueling the heart of LA with stories that matter",
     logo: "/logox3.jpg",
+    website: "https://losangelespassionnews.com",
     stats: {
-      readership: "4.2M+",
-      stories: 1800,
-      impact: 94
+      readership: "4.2k+",
+      stories: 53,
+      impact: 100
     },
     features: [
       "Neural Language Processing",
       "Holographic News Displays",
       "Crowd-sourced Verification",
-      "Quantum Computing Analysis"
+      "Data Analysis"
     ],
     recentStories: [
-      "LA's Digital Transformation",
-      "Future of Entertainment Report",
-      "Urban Technology Initiative"
+      "Check Website for Stories",
+      "Check Website for Stories",
+      "Check Website for Stories"
     ],
     color: "#ff0080"
   }
@@ -254,8 +257,26 @@ const OurMediaCompanies = () => {
                       {company.name}
                     </Typography>
 
-                    <Typography variant="body1" sx={{ mb: 3 }}>
+                    <Typography variant="body1" sx={{ mb: 3, color: '#00f2ff' }}>
                       {company.tagline}
+                    </Typography>
+
+                    <Typography variant="body1" 
+                      component="a" 
+                      href={company.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{ 
+                        mb: 3, 
+                        display: 'block',
+                        color: '#00f2ff',
+                        textDecoration: 'none',
+                        '&:hover': {
+                          textDecoration: 'underline'
+                        }
+                      }}
+                    >
+                      {company.website}
                     </Typography>
 
                     <Grid container spacing={2}>

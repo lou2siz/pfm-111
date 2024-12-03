@@ -76,9 +76,9 @@ const principles = [
       communityGrowth: 92
     },
     initiatives: [
-      "Digital Empowerment Platform",
-      "AR/VR Training Systems",
-      "Community Data Hub",
+      "Equality For All",
+      "AI Auditing",
+      "Fighting For The Forgotten",
       "Smart Resource Distribution"
     ],
     color: "#00ff00"
@@ -185,7 +185,7 @@ const WhyWeDoWhatWeDo = () => {
           align="center" 
           sx={{ 
             mb: 6,
-            background: 'linear-gradient(45deg, #00f2ff, #7928ca)',
+            background: 'linear-gradient(45deg, #00f2ff, #00f2ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',

@@ -13,9 +13,9 @@ const theme = createTheme({
       dark: '#00a9b3',
     },
     secondary: {
-      main: '#7928ca',
-      light: '#9153d7',
-      dark: '#541c8d',
+      main: '#33f5ff',
+      light: '#66f7ff',
+      dark: '#00d6e6',
     },
     background: {
       default: '#000000',
@@ -60,7 +60,7 @@ const theme = createTheme({
           textTransform: 'none',
           padding: '10px 24px',
           transition: 'all 0.3s ease-in-out',
-          background: 'linear-gradient(45deg, #00f2ff 30%, #7928ca 90%)',
+          background: 'linear-gradient(45deg, #00f2ff 30%, #33f5ff 90%)',
           fontFamily: 'Orbitron, sans-serif',
           border: '1px solid rgba(0, 242, 255, 0.3)',
           '&:hover': {
