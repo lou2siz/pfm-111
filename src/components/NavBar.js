@@ -47,6 +47,7 @@ const NavBar = () => {
         background: 'rgba(0, 0, 0, 0.8)',
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(0, 242, 255, 0.1)',
+        color: '#000000',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -59,6 +60,18 @@ const NavBar = () => {
         '& .MuiButton-root': {
           position: 'relative',
           overflow: 'hidden',
+          background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.1), rgba(121, 40, 202, 0.1))',
+          borderRadius: '8px',
+          padding: '8px 16px',
+          margin: '0 8px',
+          transition: 'all 0.3s ease-in-out',
+          fontWeight: 'bold',
+          textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
+          '&:hover': {
+            background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.2), rgba(121, 40, 202, 0.2))',
+            transform: 'translateY(-2px)',
+            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+          },
           '&::after': {
             content: '""',
             position: 'absolute',
