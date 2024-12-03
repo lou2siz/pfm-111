@@ -229,7 +229,11 @@ const WhyWeDoWhatWeDo = () => {
                       <ImpactBox color={principle.color}>
                         <Typography variant="h4" sx={{ color: principle.color }}>
                           {impacts[principle.id]?.[key] || value}
-                          {typeof value === 'number' && key.includes('Rate') ? '%' : ''}
+                          {typeof value === 'number' && 
+                            (key.includes('Rate') || 
+                             key.includes('Score') || 
+                             key.includes('Growth') || 
+                             key.includes('Success')) ? '%' : ''}
                         </Typography>
                         <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {key.replace(/([A-Z])/g, ' $1').trim()}

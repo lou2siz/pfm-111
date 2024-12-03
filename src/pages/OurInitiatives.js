@@ -265,7 +265,12 @@ const OurInitiatives = () => {
                                       color: '#00f2ff',
                                       textShadow: '0 0 10px rgba(0, 242, 255, 0.3)'
                                     }}>
-                                      {value}{typeof value === 'number' && '%'}
+                                      {value}
+                                      {typeof value === 'number' && 
+                                        (key.includes('Rate') || 
+                                         key.includes('Growth') || 
+                                         key.includes('Engagement') || 
+                                         key.includes('Score')) ? '%' : ''}
                                     </Typography>
                                     <Typography variant="caption" sx={{ 
                                       color: 'rgba(255, 255, 255, 0.7)',

@@ -245,7 +245,11 @@ const BenBriskin = () => {
                       <StatBox color={achievement.color}>
                         <Typography variant="h4" sx={{ color: achievement.color }}>
                           {stats[achievement.id]?.[key] || value}
-                          {typeof value === 'number' && key.includes('Rate') ? '%' : ''}
+                          {typeof value === 'number' && 
+                            (key.includes('Rate') || 
+                             key.includes('Satisfaction') || 
+                             key.includes('Accuracy') || 
+                             key.includes('Growth')) ? '%' : ''}
                         </Typography>
                         <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {key.replace(/([A-Z])/g, ' $1').trim()}

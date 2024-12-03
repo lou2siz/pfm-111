@@ -322,7 +322,11 @@ const OurPartnerships = () => {
                           }}
                         >
                           {metrics[partner.id]?.[key] || value}
-                          {typeof value === 'number' && key.includes('Rate') ? '%' : ''}
+                          {typeof value === 'number' && 
+                            (key.includes('Rate') || 
+                             key.includes('Success') || 
+                             key.includes('Impact') || 
+                             key.includes('Engagement')) ? '%' : ''}
                         </Typography>
                         <Typography 
                           variant="caption" 
