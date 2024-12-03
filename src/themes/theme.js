@@ -36,21 +36,32 @@ const theme = createTheme({
     h1: {
       fontFamily: 'Orbitron, sans-serif',
       fontWeight: 700,
+      fontSize: {
+        xs: '2rem',
+        sm: '2.5rem',
+        md: '3rem',
+        lg: '3.5rem'
+      },
       letterSpacing: '0.05em',
     },
     h2: {
       fontFamily: 'Orbitron, sans-serif',
       fontWeight: 700,
+      fontSize: {
+        xs: '1.75rem',
+        sm: '2rem',
+        md: '2.5rem',
+        lg: '3rem'
+      }
     },
-    h3: {
-      fontFamily: 'Orbitron, sans-serif',
-      fontWeight: 600,
-    },
-    h4: {
-      fontFamily: 'Orbitron, sans-serif',
-      fontWeight: 600,
-      letterSpacing: '0.03em',
-    },
+    body1: {
+      fontSize: {
+        xs: '0.875rem',
+        sm: '1rem',
+        md: '1.1rem'
+      },
+      lineHeight: 1.6
+    }
   },
   components: {
     MuiButton: {
@@ -86,6 +97,17 @@ const theme = createTheme({
         },
       },
     },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          padding: {
+            xs: '8px',
+            sm: '16px',
+            md: '24px'
+          }
+        }
+      }
+    }
   },
 });
 
