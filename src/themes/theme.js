@@ -31,36 +31,45 @@ const theme = createTheme({
       darkGlass: 'rgba(17, 17, 17, 0.9)',
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 480,
+      md: 768,
+      lg: 1024,
+      xl: 1280
+    }
+  },
   typography: {
     fontFamily: 'Poppins, Arial, sans-serif',
     h1: {
       fontFamily: 'Orbitron, sans-serif',
       fontWeight: 700,
       fontSize: {
-        xs: '2rem',
-        sm: '2.5rem',
+        xs: '1.75rem',
+        sm: '2.25rem',
         md: '3rem',
         lg: '3.5rem'
       },
-      letterSpacing: '0.05em',
+      letterSpacing: '0.02em',
     },
     h2: {
       fontFamily: 'Orbitron, sans-serif',
       fontWeight: 700,
       fontSize: {
-        xs: '1.75rem',
-        sm: '2rem',
-        md: '2.5rem',
-        lg: '3rem'
+        xs: '1.5rem',
+        sm: '1.75rem',
+        md: '2.25rem',
+        lg: '2.75rem'
       }
     },
     body1: {
       fontSize: {
         xs: '0.875rem',
-        sm: '1rem',
-        md: '1.1rem'
+        sm: '0.925rem',
+        md: '1rem'
       },
-      lineHeight: 1.6
+      lineHeight: 1.5
     }
   },
   components: {
@@ -101,7 +110,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           padding: {
-            xs: '8px',
+            xs: '12px',
             sm: '16px',
             md: '24px'
           }
