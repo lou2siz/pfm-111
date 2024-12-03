@@ -44,7 +44,7 @@ const NavBar = () => {
       position="sticky"
       elevation={0}
       sx={{
-        background: 'rgba(0, 0, 0, 0.8)',
+        background: '#e3f2fd',
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(0, 242, 255, 0.1)',
         color: '#000000',
@@ -60,7 +60,7 @@ const NavBar = () => {
         '& .MuiButton-root': {
           position: 'relative',
           overflow: 'hidden',
-          background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.1), rgba(121, 40, 202, 0.1))',
+          background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.05), rgba(121, 40, 202, 0.05))',
           borderRadius: '8px',
           padding: '8px 16px',
           margin: '0 8px',
@@ -68,7 +68,7 @@ const NavBar = () => {
           fontWeight: 'bold',
           textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
           '&:hover': {
-            background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.2), rgba(121, 40, 202, 0.2))',
+            background: 'linear-gradient(90deg, rgba(0, 242, 255, 0.1), rgba(121, 40, 202, 0.1))',
             transform: 'translateY(-2px)',
             boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
           },
