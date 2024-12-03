@@ -306,7 +306,7 @@ const OurPartnerships = () => {
                             (key.includes('Rate') || 
                              key.includes('Success') || 
                              (key.includes('Impact') && !key.includes('livesImpacted') && !key.includes('studentsImpacted')) || 
-                             key.includes('Engagement')) ? '%' : ''}
+                             (key.includes('Engagement') && !key.includes('studentEngagement'))) ? '%' : ''}
                         </Typography>
                         <Typography 
                           variant="caption" 
