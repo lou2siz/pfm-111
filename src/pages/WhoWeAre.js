@@ -42,7 +42,7 @@ const teamMembers = [
       "Community Engagement",
       "Digital Storytelling"
     ],
-    color: "#7928ca"
+    color: "#00f2ff"
   },
   {
     category: "California Community College Alumni",

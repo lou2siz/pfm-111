@@ -27,7 +27,7 @@ const theme = createTheme({
     },
     custom: {
       neon: '#00f2ff',
-      purple: '#7928ca',
+      purple: '#33f5ff',
       darkGlass: 'rgba(17, 17, 17, 0.9)',
     },
   },

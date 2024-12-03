@@ -45,7 +45,7 @@ const principles = [
       "Digital Rights Platform",
       "Automated Fairness Audit"
     ],
-    color: "#7928ca"
+    color: "#00f2ff"
   },
   {
     id: 3,
