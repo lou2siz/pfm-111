@@ -1,6 +1,6 @@
 // src/pages/OurPartnerships.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Typography, Grid, Box } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styled } from '@mui/material/styles';
@@ -198,27 +198,7 @@ const MetricTooltip = styled(motion.div)(({ theme }) => ({
 
 const OurPartnerships = () => {
   const [selectedPartner, setSelectedPartner] = useState(null);
-  const [metrics, setMetrics] = useState({});
   const [activeMetric, setActiveMetric] = useState(null);
-
-  // Simulate real-time metric updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const randomPartner = partnerships[Math.floor(Math.random() * partnerships.length)];
-      const metricKeys = Object.keys(randomPartner.metrics);
-      const randomMetric = metricKeys[Math.floor(Math.random() * metricKeys.length)];
-      
-      setMetrics(prev => ({
-        ...prev,
-        [randomPartner.id]: {
-          ...prev[randomPartner.id],
-          [randomMetric]: Math.floor(Math.random() * 10) + randomPartner.metrics[randomMetric]
-        }
-      }));
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const getMetricDescription = (key, value) => {
     const descriptions = {
@@ -321,11 +301,11 @@ const OurPartnerships = () => {
                             transform: activeMetric === `${partner.id}-${key}` ? 'scale(1.1)' : 'scale(1)',
                           }}
                         >
-                          {metrics[partner.id]?.[key] || value}
+                          {value}
                           {typeof value === 'number' && 
                             (key.includes('Rate') || 
                              key.includes('Success') || 
-                             (key.includes('Impact') && !key.includes('livesImpacted')) || 
+                             (key.includes('Impact') && !key.includes('livesImpacted') && !key.includes('studentsImpacted')) || 
                              key.includes('Engagement')) ? '%' : ''}
                         </Typography>
                         <Typography 
