@@ -45,7 +45,7 @@ const partnerships = [
 // Styled Components
 const PartnershipCard = styled(motion.div)(({ theme, color }) => ({
   position: 'relative',
-  padding: { xs: theme.spacing(2), sm: theme.spacing(3), md: theme.spacing(4) },
+  padding: theme.spacing(4),
   background: 'rgba(17, 17, 17, 0.7)',
   backdropFilter: 'blur(10px)',
   borderRadius: theme.spacing(2),
@@ -69,15 +69,18 @@ const PartnershipCard = styled(motion.div)(({ theme, color }) => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
+    padding: theme.spacing(1),
   },
   '& .header-section': {
     display: 'flex',
     alignItems: 'center',
     marginBottom: theme.spacing(3),
+    padding: theme.spacing(0, 2),
   },
   '& .description-section': {
     flex: 1,
     marginBottom: theme.spacing(4),
+    padding: theme.spacing(0, 2),
   },
   '& .details-section': {
     marginTop: 'auto',
