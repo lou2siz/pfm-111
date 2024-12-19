@@ -69,18 +69,18 @@ const PartnershipCard = styled(motion.div)(({ theme, color }) => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
-    padding: theme.spacing(1),
+    padding: theme.spacing(2, 4),
   },
   '& .header-section': {
     display: 'flex',
     alignItems: 'center',
     marginBottom: theme.spacing(3),
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(0, 4),
   },
   '& .description-section': {
     flex: 1,
     marginBottom: theme.spacing(4),
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(0, 4),
   },
   '& .details-section': {
     marginTop: 'auto',
