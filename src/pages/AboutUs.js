@@ -67,7 +67,7 @@ const AboutUs = () => {
               fontSize: { xs: '2rem', sm: '2.5rem', md: '4rem' },
               fontWeight: 700,
               textShadow: '0 0 20px rgba(0, 242, 255, 0.3)',
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: theme.typography.h1.fontFamily,
             }}
           >
             About Us
@@ -81,7 +81,7 @@ const AboutUs = () => {
               color: 'rgba(255, 255, 255, 0.8)',
               maxWidth: '800px',
               mx: 'auto',
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: theme.typography.body1.fontFamily,
             }}
           >
             Pioneering the future of media through technology and truth
@@ -106,7 +106,7 @@ const AboutUs = () => {
                   color: 'primary.main',
                   textShadow: '0 0 10px rgba(0, 242, 255, 0.5)',
                   mb: 3,
-                  fontFamily: 'Orbitron, sans-serif',
+                  fontFamily: theme.typography.h1.fontFamily,
                 }}
               >
                 Our Mission
@@ -118,7 +118,7 @@ const AboutUs = () => {
                   fontSize: '1.1rem',
                   lineHeight: 1.8,
                   color: 'rgba(255, 255, 255, 0.9)',
-                  fontFamily: 'Orbitron, sans-serif',
+                  fontFamily: theme.typography.body1.fontFamily,
                 }}
               >
                 At <strong style={{ color: '#00f2ff' }}>Passionfruit Media</strong>, 
@@ -159,7 +159,7 @@ const AboutUs = () => {
                   color: 'secondary.main',
                   textShadow: '0 0 10px rgba(160, 100, 255, 0.5)',
                   mb: 3,
-                  fontFamily: 'Orbitron, sans-serif',
+                  fontFamily: theme.typography.h1.fontFamily,
                 }}
               >
                 Our Impact
@@ -171,7 +171,7 @@ const AboutUs = () => {
                   fontSize: '1.1rem',
                   lineHeight: 1.8,
                   color: 'rgba(255, 255, 255, 0.9)',
-                  fontFamily: 'Orbitron, sans-serif',
+                  fontFamily: theme.typography.body1.fontFamily,
                 }}
               >
                 Through our network of media companies and partnerships, we've
