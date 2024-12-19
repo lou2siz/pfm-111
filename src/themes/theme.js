@@ -1,5 +1,3 @@
-// src/themes/theme.js
-
 import { createTheme } from '@mui/material/styles';
 import '@fontsource/poppins';
 import '@fontsource/orbitron'; // Add futuristic font for headings
@@ -46,31 +44,67 @@ const theme = createTheme({
       fontFamily: 'Orbitron, sans-serif',
       fontWeight: 700,
       fontSize: {
-        xs: '1.75rem',
-        sm: '2.25rem',
+        xs: '2rem',
+        sm: '2.5rem',
         md: '3rem',
         lg: '3.5rem'
       },
+      lineHeight: 1.2,
       letterSpacing: '0.02em',
     },
     h2: {
       fontFamily: 'Orbitron, sans-serif',
       fontWeight: 700,
       fontSize: {
+        xs: '1.75rem',
+        sm: '2rem',
+        md: '2.5rem',
+        lg: '3rem'
+      },
+      lineHeight: 1.2,
+      letterSpacing: '0.01em',
+    },
+    h3: {
+      fontFamily: 'Orbitron, sans-serif',
+      fontWeight: 600,
+      fontSize: {
         xs: '1.5rem',
         sm: '1.75rem',
-        md: '2.25rem',
-        lg: '2.75rem'
-      }
+        md: '2rem',
+        lg: '2.25rem'
+      },
+      lineHeight: 1.3,
+    },
+    h4: {
+      fontFamily: 'Orbitron, sans-serif',
+      fontWeight: 600,
+      fontSize: {
+        xs: '1.25rem',
+        sm: '1.375rem',
+        md: '1.5rem',
+        lg: '1.75rem'
+      },
+      lineHeight: 1.3,
     },
     body1: {
       fontSize: {
         xs: '0.875rem',
-        sm: '0.925rem',
-        md: '1rem'
+        sm: '0.9375rem',
+        md: '1rem',
+        lg: '1.125rem'
       },
-      lineHeight: 1.5
-    }
+      lineHeight: 1.6,
+      letterSpacing: '0.01em',
+    },
+    body2: {
+      fontSize: {
+        xs: '0.8125rem',
+        sm: '0.875rem',
+        md: '0.9375rem',
+        lg: '1rem'
+      },
+      lineHeight: 1.5,
+    },
   },
   components: {
     MuiButton: {
@@ -109,10 +143,33 @@ const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         root: {
-          padding: {
-            xs: '12px',
-            sm: '16px',
-            md: '24px'
+          paddingLeft: {
+            xs: '16px',
+            sm: '24px',
+            md: '32px'
+          },
+          paddingRight: {
+            xs: '16px',
+            sm: '24px',
+            md: '32px'
+          },
+          maxWidth: {
+            xs: '100%',
+            sm: '600px',
+            md: '960px',
+            lg: '1280px',
+            xl: '1536px'
+          }
+        }
+      }
+    },
+    MuiGrid: {
+      styleOverrides: {
+        container: {
+          spacing: {
+            xs: 2,
+            sm: 3,
+            md: 4
           }
         }
       }

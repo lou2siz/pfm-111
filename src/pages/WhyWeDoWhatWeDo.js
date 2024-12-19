@@ -1,6 +1,6 @@
 // src/pages/WhyWeDoWhatWeDo.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Typography, Grid, Box } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styled } from '@mui/material/styles';
@@ -16,11 +16,6 @@ const principles = [
     title: "Integrity Matters",
     icon: <SecurityIcon />,
     description: "People deserve access to the truth and the tools to fight for their rights.",
-    impact: {
-      truthRevealedCount: 1250,
-      communitiesEmpowered: 85,
-      transparencyScore: 98
-    },
     initiatives: [
       "Blockchain-Verified Reporting",
       "AI Truth Detection Systems",
@@ -34,11 +29,6 @@ const principles = [
     title: "Equity is Non-Negotiable",
     icon: <BalanceIcon />,
     description: "Everyone deserves equal pay, opportunities, and respect, regardless of their background.",
-    impact: {
-      equalityInitiatives: 750,
-      discriminationCases: 320,
-      successRate: 94
-    },
     initiatives: [
       "AI Bias Detection",
       "Smart Contract Equality",
@@ -52,11 +42,6 @@ const principles = [
     title: "Hate Has No Place",
     icon: <BlockIcon />,
     description: "We foster an inclusive environment and combat discrimination in all forms.",
-    impact: {
-      incidentsAddressed: 890,
-      communitiesProtected: 125,
-      preventionRate: 96
-    },
     initiatives: [
       "Neural Hate Speech Detection",
       "Community Shield Protocol",
@@ -70,11 +55,6 @@ const principles = [
     title: "Empowerment is Key",
     icon: <EmojiPeopleIcon />,
     description: "Through education, litigation, and media, we provide tools for systemic change.",
-    impact: {
-      peopleEmpowered: 25000,
-      toolsDeployed: 450,
-      communityGrowth: 92
-    },
     initiatives: [
       "Equality For All",
       "AI Auditing",
@@ -137,41 +117,9 @@ const IconWrapper = styled(Box)(({ color }) => ({
   }
 }));
 
-const ImpactBox = styled(motion.div)(({ theme, color }) => ({
-  padding: theme.spacing(2),
-  background: 'rgba(255, 255, 255, 0.05)',
-  borderRadius: theme.spacing(1),
-  transition: 'all 0.3s ease-in-out',
-  '&:hover': {
-    background: 'rgba(255, 255, 255, 0.1)',
-    transform: 'translateY(-5px)',
-    boxShadow: `0 5px 15px ${color}33`,
-  }
-}));
-
 const WhyWeDoWhatWeDo = () => {
   const [selectedPrinciple, setSelectedPrinciple] = useState(null);
-  const [impacts, setImpacts] = useState({});
   const [hoveredInitiative, setHoveredInitiative] = useState(null);
-
-  // Simulate real-time impact updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const randomPrinciple = principles[Math.floor(Math.random() * principles.length)];
-      const impactKeys = Object.keys(randomPrinciple.impact);
-      const randomImpact = impactKeys[Math.floor(Math.random() * impactKeys.length)];
-      
-      setImpacts(prev => ({
-        ...prev,
-        [randomPrinciple.id]: {
-          ...prev[randomPrinciple.id],
-          [randomImpact]: Math.floor(Math.random() * 10) + randomPrinciple.impact[randomImpact]
-        }
-      }));
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <Container maxWidth="xl" sx={{ mt: { xs: 4, md: 8 }, mb: { xs: 4, md: 8 } }}>
@@ -202,22 +150,28 @@ const WhyWeDoWhatWeDo = () => {
                 {principle.title}
               </Typography>
               
-              <Grid container spacing={{ xs: 1, md: 2 }}>
-                {Object.entries(principle.impact).map(([key, value]) => (
-                  <Grid item xs={12} sm={4} key={key}>
-                    <ImpactBox color={principle.color}>
-                      <Typography variant="h4" sx={{ color: principle.color }}>
-                        {impacts[principle.id]?.[key] || value}
-                        {typeof value === 'number' && 
-                          (key.includes('Rate') || 
-                           key.includes('Score') || 
-                           key.includes('Growth') || 
-                           key.includes('Success')) ? '%' : ''}
-                      </Typography>
-                      <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                        {key.replace(/([A-Z])/g, ' $1').trim()}
-                      </Typography>
-                    </ImpactBox>
+              <Typography variant="body1" sx={{ mb: 3 }}>
+                {principle.description}
+              </Typography>
+
+              <Grid container spacing={2}>
+                {principle.initiatives.map((initiative) => (
+                  <Grid item xs={12} sm={6} key={initiative}>
+                    <Box sx={{ 
+                      p: 2, 
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      borderRadius: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1,
+                      '&:hover': {
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        transform: 'translateX(10px)',
+                      }
+                    }}>
+                      <RocketLaunchIcon sx={{ color: principle.color }} />
+                      <Typography variant="body2">{initiative}</Typography>
+                    </Box>
                   </Grid>
                 ))}
               </Grid>

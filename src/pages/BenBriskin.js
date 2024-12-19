@@ -6,8 +6,7 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
+
 
 const achievements = [
   {
@@ -131,20 +130,8 @@ const StatBox = styled(motion.div)(({ theme, color }) => ({
   }
 }));
 
-const SocialLink = styled('a')(({ theme, color }) => ({
-  color: color,
-  textDecoration: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  gap: theme.spacing(1),
-  padding: theme.spacing(1),
-  borderRadius: theme.spacing(1),
-  transition: 'all 0.3s ease-in-out',
-  '&:hover': {
-    background: 'rgba(255, 255, 255, 0.1)',
-    transform: 'translateX(10px)',
-  }
-}));
+
+
 
 const BenBriskin = () => {
   const [selectedRole, setSelectedRole] = useState(null);

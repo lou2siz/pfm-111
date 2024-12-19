@@ -1,13 +1,10 @@
 // src/pages/OurMediaCompanies.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Typography, Grid, Box } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import LaunchIcon from '@mui/icons-material/Launch';
-import AnalyticsIcon from '@mui/icons-material/Analytics';
-import GroupIcon from '@mui/icons-material/Group';
-import ArticleIcon from '@mui/icons-material/Article';
 import InfoIcon from '@mui/icons-material/Info';
 
 const mediaCompanies = [
@@ -17,21 +14,11 @@ const mediaCompanies = [
     tagline: "Illuminating the stories of San Diego's diverse communities",
     logo: "/logox1.jpg",
     website: "https://sandiegosunreport.com",
-    stats: {
-      readership: "2.1k+",
-      stories: 20,
-      impact: 100
-    },
     features: [
       "AI-Powered Investigation Tools",
       "Real-time Community Engagement",
       "Blockchain-verified Sources",
       "Neural Network Analysis"
-    ],
-    recentStories: [
-      "Check Website for Stories",
-      "Check Website for Stories",
-      "Check Website for Stories"
     ],
     color: "#00f2ff"
   },
@@ -41,21 +28,11 @@ const mediaCompanies = [
     tagline: "Championing liberty and justice in the Bay Area",
     logo: "/logox2.jpg",
     website: "https://sanfranciscofreedomtimes.com",
-    stats: {
-      readership: "3.1k+",
-      stories: 34,
-      impact: 100
-    },
     features: [
       "Quantum-secured Data Protection",
       "Decentralized Publishing Platform",
       "High Level News Experience",
       "Transparency"
-    ],
-    recentStories: [
-      "Check Website for Stories",
-      "Check Website for Stories",
-      "Check Website for Stories"
     ],
     color: "#00f2ff"
   },
@@ -65,21 +42,11 @@ const mediaCompanies = [
     tagline: "Fueling the heart of LA with stories that matter",
     logo: "/logox3.jpg",
     website: "https://losangelespassionnews.com",
-    stats: {
-      readership: "4.2k+",
-      stories: 53,
-      impact: 100
-    },
     features: [
       "Neural Language Processing",
       "Holographic News Displays",
       "Crowd-sourced Verification",
       "Data Analysis"
-    ],
-    recentStories: [
-      "Check Website for Stories",
-      "Check Website for Stories",
-      "Check Website for Stories"
     ],
     color: "#ff0080"
   }
@@ -111,19 +78,6 @@ const MediaCard = styled(motion.div)(({ theme, color }) => ({
   },
 }));
 
-const StatsBox = styled(Box)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.05)',
-  borderRadius: theme.spacing(1),
-  padding: theme.spacing(2),
-  display: 'flex',
-  alignItems: 'center',
-  gap: theme.spacing(2),
-  transition: 'all 0.3s ease-in-out',
-  '&:hover': {
-    background: 'rgba(255, 255, 255, 0.1)',
-    transform: 'translateY(-5px)',
-  },
-}));
 
 const InfoIconWrapper = styled(motion.div)(({ theme }) => ({
   position: 'absolute',
@@ -139,24 +93,7 @@ const InfoIconWrapper = styled(motion.div)(({ theme }) => ({
 
 const OurMediaCompanies = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);
-  const [stats, setStats] = useState({});
   const [hoveredInfo, setHoveredInfo] = useState(null);
-
-  // Simulate real-time stats updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStats(prev => ({
-        ...prev,
-        [Math.floor(Math.random() * mediaCompanies.length)]: {
-          readership: (Math.random() * 0.1 + 1).toFixed(2) + 'M+',
-          stories: Math.floor(Math.random() * 100) + 1000,
-          impact: Math.floor(Math.random() * 5) + 90
-        }
-      }));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <Container maxWidth="xl" sx={{ mt: { xs: 4, md: 8 }, mb: { xs: 4, md: 8 } }}>
@@ -272,24 +209,6 @@ const OurMediaCompanies = () => {
                     >
                       {company.website}
                     </Typography>
-
-                    <Grid container spacing={{ xs: 1, md: 2 }}>
-                      {Object.entries(company.stats).map(([key, value]) => (
-                        <Grid item xs={12} sm={4} key={key}>
-                          <StatsBox>
-                            {key === 'readership' && <AnalyticsIcon sx={{ color: company.color }} />}
-                            {key === 'stories' && <ArticleIcon sx={{ color: company.color }} />}
-                            {key === 'impact' && <GroupIcon sx={{ color: company.color }} />}
-                            <Box>
-                              <Typography variant="h6" sx={{ color: company.color }}>
-                                {stats[company.id]?.hasOwnProperty(key) ? stats[company.id][key] : value}
-                              </Typography>
-                              <Typography variant="caption">{key.charAt(0).toUpperCase() + key.slice(1)}</Typography>
-                            </Box>
-                          </StatsBox>
-                        </Grid>
-                      ))}
-                    </Grid>
                   </Box>
 
                   <AnimatePresence>

@@ -17,11 +17,6 @@ const partnerships = [
     name: "California Community Colleges",
     icon: <SchoolIcon />,
     description: "Supporting student-driven innovation and providing opportunities for the next generation of change-makers.",
-    metrics: {
-      studentsImpacted: 250000,
-      programsLaunched: 3,
-      successRate: 80
-    },
     initiatives: [
       "AI-Powered Learning Labs",
       "Student Innovation Hub",
@@ -40,11 +35,6 @@ const partnerships = [
     name: "MiraCosta Community College",
     icon: <AccountBalanceIcon />,
     description: "Our birthplace and a vital partner in empowering students to stand up for justice.",
-    metrics: {
-      projectsCompleted: 3,
-      studentEngagement: 412,
-      communityImpact: 100
-    },
     initiatives: [
       "Virtual Reality Campus",
       "Blockchain Certificates",
@@ -63,11 +53,6 @@ const partnerships = [
     name: "Truthout.org",
     icon: <CampaignIcon />,
     description: "A leading voice in independent journalism, helping us amplify critical stories.",
-    metrics: {
-      storiesPublished: 67,
-      readership: 1500,
-      investigationSuccess: 80
-    },
     initiatives: [
       "AI Truth Detection",
       "Decentralized Publishing",
@@ -86,11 +71,6 @@ const partnerships = [
     name: "Equality California",
     icon: <DiversityIcon />,
     description: "Advocating for LGBTQ+ rights and ensuring equality for all communities.",
-    metrics: {
-      policiesChanged: 1,
-      livesImpacted: 250,
-      advocacyWins: 2
-    },
     initiatives: [
       "Digital Rights Platform",
       "AI Bias Detection",
@@ -156,74 +136,8 @@ const IconBox = styled(Box)(({ color }) => ({
   }
 }));
 
-const MetricBox = styled(motion.div)(({ theme, color, isActive }) => ({
-  padding: { xs: theme.spacing(1), sm: theme.spacing(2) },
-  background: isActive ? `rgba(${color}, 0.15)` : 'rgba(255, 255, 255, 0.05)',
-  borderRadius: theme.spacing(1),
-  transition: 'all 0.3s ease-in-out',
-  cursor: 'pointer',
-  position: 'relative',
-  '&:hover': {
-    background: `rgba(${color}, 0.2)`,
-    transform: 'translateY(-5px)',
-    boxShadow: `0 5px 15px ${color}33`,
-  },
-  '& .MuiTypography-h4': {
-    fontSize: {
-      xs: '1.5rem',
-      sm: '1.75rem',
-      md: '2rem'
-    }
-  }
-}));
-
-const MetricTooltip = styled(motion.div)(({ theme }) => ({
-  position: 'absolute',
-  top: -40,
-  left: '50%',
-  transform: 'translateX(-50%)',
-  background: 'rgba(0, 0, 0, 0.9)',
-  padding: '8px 12px',
-  borderRadius: '4px',
-  fontSize: '0.75rem',
-  color: 'white',
-  whiteSpace: 'nowrap',
-  zIndex: 10,
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: -5,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: 0,
-    height: 0,
-    borderLeft: '6px solid transparent',
-    borderRight: '6px solid transparent',
-    borderTop: '6px solid rgba(0, 0, 0, 0.9)',
-  }
-}));
-
 const OurPartnerships = () => {
   const [selectedPartner, setSelectedPartner] = useState(null);
-  const [activeMetric, setActiveMetric] = useState(null);
-
-  const getMetricDescription = (key, value) => {
-    const descriptions = {
-      studentsImpacted: 'Total number of students benefiting from our programs',
-      programsLaunched: 'New initiatives successfully implemented',
-      successRate: 'Percentage of successful program outcomes',
-      projectsCompleted: 'Total projects delivered successfully',
-      studentEngagement: 'Student participation rate in our programs',
-      communityImpact: 'Community satisfaction score',
-      storiesPublished: 'Total investigative stories published',
-      readership: 'Monthly active readers',
-      investigationSuccess: 'Successful investigation completion rate',
-      policiesChanged: 'Number of policies influenced',
-      livesImpacted: 'People directly impacted by our work',
-      advocacyWins: 'Successful advocacy campaign rate'
-    };
-    return descriptions[key] || 'Impact metric';
-  };
 
   return (
     <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
@@ -277,59 +191,6 @@ const OurPartnerships = () => {
                 <Typography variant="body1" sx={{ mb: 4, color: 'rgba(255, 255, 255, 0.8)' }}>
                   {partner.description}
                 </Typography>
-
-                <Grid container spacing={2}>
-                  {Object.entries(partner.metrics).map(([key, value]) => (
-                    <Grid item xs={12} sm={4} key={key}>
-                      <MetricBox
-                        color={partner.color}
-                        isActive={activeMetric === `${partner.id}-${key}`}
-                        onMouseEnter={() => setActiveMetric(`${partner.id}-${key}`)}
-                        onMouseLeave={() => setActiveMetric(null)}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <AnimatePresence>
-                          {activeMetric === `${partner.id}-${key}` && (
-                            <MetricTooltip
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 10 }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              {getMetricDescription(key, value)}
-                            </MetricTooltip>
-                          )}
-                        </AnimatePresence>
-                        
-                        <Typography 
-                          variant="h4" 
-                          sx={{ 
-                            color: partner.color,
-                            transition: 'all 0.3s ease-in-out',
-                            transform: activeMetric === `${partner.id}-${key}` ? 'scale(1.1)' : 'scale(1)',
-                          }}
-                        >
-                          {value}
-                          {typeof value === 'number' && 
-                            (key.includes('Rate') || 
-                             key.includes('Success') || 
-                             (key.includes('Impact') && !key.includes('livesImpacted') && !key.includes('studentsImpacted')) || 
-                             (key.includes('Engagement') && !key.includes('studentEngagement'))) ? '%' : ''}
-                        </Typography>
-                        <Typography 
-                          variant="caption" 
-                          sx={{ 
-                            color: 'rgba(255, 255, 255, 0.7)',
-                            display: 'block',
-                            marginTop: 1
-                          }}
-                        >
-                          {key.replace(/([A-Z])/g, ' $1').trim()}
-                        </Typography>
-                      </MetricBox>
-                    </Grid>
-                  ))}
-                </Grid>
 
                 <AnimatePresence>
                   {selectedPartner === partner.id && (
