@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import GavelIcon from '@mui/icons-material/Gavel';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import SchoolIcon from '@mui/icons-material/School';
+import { motion } from 'framer-motion';
 
 const teamMembers = [
   {

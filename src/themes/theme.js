@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
-import '@fontsource/poppins';
-import '@fontsource/orbitron'; // Add futuristic font for headings
+import '@fontsource/libre-baskerville';
+import '@fontsource/source-sans-pro';
 
 const theme = createTheme({
   palette: {
@@ -39,21 +39,9 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: 'Poppins, Arial, sans-serif',
+    fontFamily: '"Source Sans Pro", Arial, sans-serif',
     h1: {
-      fontFamily: 'Orbitron, sans-serif',
-      fontWeight: 700,
-      fontSize: {
-        xs: '2rem',
-        sm: '2.5rem',
-        md: '3rem',
-        lg: '3.5rem'
-      },
-      lineHeight: 1.2,
-      letterSpacing: '0.02em',
-    },
-    h2: {
-      fontFamily: 'Orbitron, sans-serif',
+      fontFamily: '"Libre Baskerville", Georgia, serif',
       fontWeight: 700,
       fontSize: {
         xs: '1.75rem',
@@ -61,49 +49,70 @@ const theme = createTheme({
         md: '2.5rem',
         lg: '3rem'
       },
-      lineHeight: 1.2,
+      lineHeight: 1.3,
       letterSpacing: '0.01em',
     },
-    h3: {
-      fontFamily: 'Orbitron, sans-serif',
-      fontWeight: 600,
+    h2: {
+      fontFamily: '"Libre Baskerville", Georgia, serif',
+      fontWeight: 700,
       fontSize: {
         xs: '1.5rem',
         sm: '1.75rem',
         md: '2rem',
-        lg: '2.25rem'
+        lg: '2.5rem'
       },
       lineHeight: 1.3,
+      letterSpacing: '0.01em',
     },
-    h4: {
-      fontFamily: 'Orbitron, sans-serif',
+    h3: {
+      fontFamily: '"Libre Baskerville", Georgia, serif',
       fontWeight: 600,
       fontSize: {
         xs: '1.25rem',
-        sm: '1.375rem',
+        sm: '1.5rem',
+        md: '1.75rem',
+        lg: '2rem'
+      },
+      lineHeight: 1.4,
+    },
+    h4: {
+      fontFamily: '"Libre Baskerville", Georgia, serif',
+      fontWeight: 600,
+      fontSize: {
+        xs: '1.125rem',
+        sm: '1.25rem',
         md: '1.5rem',
         lg: '1.75rem'
       },
-      lineHeight: 1.3,
+      lineHeight: 1.4,
     },
     body1: {
+      fontFamily: '"Source Sans Pro", Arial, sans-serif',
       fontSize: {
-        xs: '0.875rem',
-        sm: '0.9375rem',
-        md: '1rem',
+        xs: '0.9375rem',
+        sm: '1rem',
+        md: '1.0625rem',
         lg: '1.125rem'
       },
       lineHeight: 1.6,
       letterSpacing: '0.01em',
     },
     body2: {
+      fontFamily: '"Source Sans Pro", Arial, sans-serif',
       fontSize: {
-        xs: '0.8125rem',
-        sm: '0.875rem',
-        md: '0.9375rem',
-        lg: '1rem'
+        xs: '0.875rem',
+        sm: '0.9375rem',
+        md: '1rem',
+        lg: '1.0625rem'
       },
       lineHeight: 1.5,
+      letterSpacing: '0.01em',
+    },
+    button: {
+      fontFamily: '"Source Sans Pro", Arial, sans-serif',
+      fontWeight: 600,
+      letterSpacing: '0.02em',
+      textTransform: 'none',
     },
   },
   components: {
