@@ -1,7 +1,7 @@
 // src/pages/WhoWeAre.js
 
-
-import { Container, Typography, Grid, Box } from '@mui/material';
+import React from 'react';
+import { Container, Typography, Grid, Box, useTheme } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import GavelIcon from '@mui/icons-material/Gavel';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -78,7 +78,8 @@ const TeamCard = styled(motion.div)(({ theme,
 
 
 const WhoWeAre = () => {
-
+  const theme = useTheme();
+  
   return (
     <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
       <motion.div

@@ -1,12 +1,14 @@
 // src/pages/AboutUs.js
 
 import React from 'react';
-import { Container, Typography, Grid, Box } from '@mui/material';
+import { Container, Typography, Grid, Box, useTheme } from '@mui/material';
 import NeonBox from '../components/shared/NeonBox';
 import GradientText from '../components/shared/GradientText';
 import { motion } from 'framer-motion';
 
 const AboutUs = () => {
+  const theme = useTheme();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

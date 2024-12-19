@@ -1,7 +1,7 @@
 // src/pages/OurInitiatives.js
 
 import React, { useState } from 'react';
-import { Container, Typography, Grid, Box, IconButton } from '@mui/material';
+import { Container, Typography, Grid, Box, IconButton, useTheme } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -104,7 +104,8 @@ const initiatives = [
 ];
 
 const OurInitiatives = () => {
-  const [expandedId, setExpandedId] = useState(null);
+  const theme = useTheme();
+  const [selectedInitiative, setSelectedInitiative] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
@@ -127,7 +128,7 @@ const OurInitiatives = () => {
               mb: { xs: 2, md: 0 }
             }}>
               <InitiativeCard
-                onClick={() => setExpandedId(expandedId === initiative.id ? null : initiative.id)}
+                onClick={() => setSelectedInitiative(selectedInitiative === initiative.id ? null : initiative.id)}
                 onMouseEnter={() => setHoveredId(initiative.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 whileHover={{ scale: 1.02 }}
@@ -153,7 +154,7 @@ const OurInitiatives = () => {
                 </Typography>
 
                 <AnimatePresence>
-                  {expandedId === initiative.id && (
+                  {selectedInitiative === initiative.id && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
@@ -206,7 +207,7 @@ const OurInitiatives = () => {
                     position: 'absolute',
                     bottom: 16,
                     right: 16,
-                    transform: expandedId === initiative.id ? 'rotate(180deg)' : 'none',
+                    transform: selectedInitiative === initiative.id ? 'rotate(180deg)' : 'none',
                     transition: 'transform 0.3s ease-in-out'
                   }}
                 >

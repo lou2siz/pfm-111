@@ -1,7 +1,7 @@
 // src/pages/OurMediaCompanies.js
 
 import React, { useState } from 'react';
-import { Container, Typography, Grid, Box } from '@mui/material';
+import { Container, Typography, Grid, Box, useTheme } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import LaunchIcon from '@mui/icons-material/Launch';
@@ -92,6 +92,7 @@ const InfoIconWrapper = styled(motion.div)(({ theme }) => ({
 }));
 
 const OurMediaCompanies = () => {
+  const theme = useTheme();
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [hoveredInfo, setHoveredInfo] = useState(null);
 
