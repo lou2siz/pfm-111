@@ -1,8 +1,8 @@
 // src/pages/OurPartnerships.js
 
-import React, { useState } from 'react';
-import { Container, Typography, Grid, Box } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { Container, Typography, Grid, Box, useTheme } from '@mui/material';
+import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import SchoolIcon from '@mui/icons-material/School';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
@@ -110,6 +110,8 @@ const IconBox = styled(Box)(({ color }) => ({
 }));
 
 const OurPartnerships = () => {
+  const theme = useTheme();
+
   return (
     <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
       <motion.div
