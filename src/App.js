@@ -1,47 +1,46 @@
 // src/App.js
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+// Components
 import NavBar from './components/NavBar';
+import AnimatedBackground from './components/AnimatedBackground';
+
+// Pages
 import AboutUs from './pages/AboutUs';
 import OurInitiatives from './pages/OurInitiatives';
 import OurPartnerships from './pages/OurPartnerships';
-import WhyWeDoWhatWeDo from './pages/WhyWeDoWhatWeDo';
-import WhoWeAre from './pages/WhoWeAre';
 import OurMediaCompanies from './pages/OurMediaCompanies';
-import BenBriskin from './pages/BenBriskin';
+import WhoWeAre from './pages/WhoWeAre';
+import WhyWeDoWhatWeDo from './pages/WhyWeDoWhatWeDo';
 
-// Protected route wrapper
-const ProtectedRoute = ({ children }) => {
-  // Basic authentication check - replace with your actual auth logic
-  const isAuthenticated = true; // For now, always allow access
-  
-  // Redirect to home if not authenticated
-  return isAuthenticated ? children : <Navigate to="/" />;
-};
+// Styles and Theme
+import theme from './themes/theme';
+import './App.css';
 
-const App = () => {
+function App() {
   return (
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<AboutUs />} />
-        <Route path="/initiatives" element={<OurInitiatives />} />
-        <Route path="/partnerships" element={<OurPartnerships />} />
-        <Route path="/why-we-do-what-we-do" element={<WhyWeDoWhatWeDo />} />
-        <Route path="/who-we-are" element={<WhoWeAre />} />
-        <Route path="/media-companies" element={<OurMediaCompanies />} />
-        <Route 
-          path="/ben-briskin" 
-          element={
-            <ProtectedRoute>
-              <BenBriskin />
-            </ProtectedRoute>
-          } 
-        />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <div className="app-container">
+          <AnimatedBackground />
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<AboutUs />} />
+            <Route path="/initiatives" element={<OurInitiatives />} />
+            <Route path="/partnerships" element={<OurPartnerships />} />
+            <Route path="/media-companies" element={<OurMediaCompanies />} />
+            <Route path="/who-we-are" element={<WhoWeAre />} />
+            <Route path="/why-we-do-what-we-do" element={<WhyWeDoWhatWeDo />} />
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
